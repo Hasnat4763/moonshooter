@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://lieqghncfpij"]
+
+[ext_resource type="PackedScene" uid="uid://copgqwn0pmr0q" path="res://tscn/player_spaceship.tscn" id="1_qorcu"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qorcu"]
+distance = -1280.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_txxj3"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cxrnk"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2ijdq"]
+normal = Vector2(0, 1)
+
+[node name="Main_Scene" type="Node2D"]
+
+[node name="player_spaceship" parent="." instance=ExtResource("1_qorcu")]
+position = Vector2(365, 715)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_qorcu")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(720, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_txxj3")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("WorldBoundaryShape2D_cxrnk")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+shape = SubResource("WorldBoundaryShape2D_2ijdq")

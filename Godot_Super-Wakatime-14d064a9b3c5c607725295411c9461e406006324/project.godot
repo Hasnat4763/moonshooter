@@ -10,16 +10,13 @@ config_version=5
 
 [application]
 
-config/name="Moonshooter"
-run/main_scene="uid://lieqghncfpij"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/name="WakatimePlugin"
+config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
-[display]
+[dotnet]
 
-window/size/viewport_width=720
-window/size/viewport_height=1280
-window/size/mode=1
+project/assembly_name="WakatimePlugin"
 
 [editor_plugins]
 
@@ -27,6 +24,4 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
-viewport/hdr_2d=true
+renderer/rendering_method="mobile"

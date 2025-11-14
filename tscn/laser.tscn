@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://tdfb3hi3qtn2"]
+
+[ext_resource type="Texture2D" uid="uid://bjdax8qq42dbd" path="res://sprites/laser.png" id="1_quho0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbfn4"]
+size = Vector2(4, 10)
+
+[node name="laser" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_quho0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fbfn4")
