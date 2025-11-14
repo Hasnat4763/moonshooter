@@ -26,6 +26,11 @@ window/handheld/orientation=1
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
+[global_group]
+
+enemies=""
+laser=""
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

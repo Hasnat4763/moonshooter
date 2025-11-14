@@ -6,11 +6,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fbfn4"]
 size = Vector2(4, 10)
 
-[node name="laser" type="Area2D"]
+[node name="laser" type="Area2D" groups=["enemies"]]
 script = ExtResource("1_fbfn4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_quho0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["laser"]]
 shape = SubResource("RectangleShape2D_fbfn4")
+
+[connection signal="area_entered" from="." to="." method="_on_laser_entered"]

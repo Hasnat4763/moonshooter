@@ -24,9 +24,13 @@ func start_game():
 
 
 func spawn_spaceship():
-	var screensize = get_viewport().get_visible_rect().size
+	#var screensize = get_viewport().get_visible_rect().size
 	var enemy_spaceship = enemy_spaceship_scene.instantiate()
-	enemy_spaceship.position.x = randi_range(0, screensize.x)
+	enemy_spaceship.position.x = randi_range(10, 350)
 	enemy_spaceship.position.y = -50
+	enemy_spaceship.hit.connect(laser_hit)
 	get_tree().current_scene.add_child(enemy_spaceship)
 	
+func laser_hit():
+	point += 1
+	print(point)
