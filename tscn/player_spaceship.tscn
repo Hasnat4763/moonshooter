@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://copgqwn0pmr0q"]
+[gd_scene load_steps=5 format=3 uid="uid://copgqwn0pmr0q"]
 
 [ext_resource type="Texture2D" uid="uid://7r1i8wvkuown" path="res://sprites/spaceship.png" id="1_1uxfi"]
-[ext_resource type="Script" uid="uid://hxj4krycqosb" path="res://tscn/player_spaceship.gd" id="1_5hcij"]
+[ext_resource type="Script" uid="uid://hxj4krycqosb" path="res://scripts/player_spaceship.gd" id="1_5hcij"]
+[ext_resource type="PackedScene" uid="uid://tdfb3hi3qtn2" path="res://tscn/laser.tscn" id="2_vbtcn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hcij"]
 size = Vector2(32, 34)
 
 [node name="player_spaceship" type="CharacterBody2D"]
 script = ExtResource("1_5hcij")
+laser_scene = ExtResource("2_vbtcn")
 
 [node name="shipsprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_1uxfi")

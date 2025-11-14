@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
+var can_shoot: bool = true
+@export var laser_scene : PackedScene
+@export var cooldown = 0.5
 
 func _physics_process(_delta: float) -> void:
 
@@ -16,5 +19,18 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = direction_horizontal * SPEED
 	else:
 		velocity.y = move_toward(velocity.y , 0 , SPEED)
-
+		
+	if can_shoot and Input.is_action_pressed("ui_accept"):
+		shooting()
 	move_and_slide()
+
+
+func shooting():
+	can_shoot = false
+	
+	var laser = laser_scene.instantiate()
+	laser.position = position
+	get_tree().current_scene.add_child(laser)
+	
+	await get_tree().create_timer(cooldown).timeout
+	can_shoot = true
