@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://lieqghncfpij"]
+[gd_scene load_steps=10 format=3 uid="uid://lieqghncfpij"]
 
 [ext_resource type="Script" uid="uid://kfcydxbrq08h" path="res://scripts/main_scene.gd" id="1_cxrnk"]
 [ext_resource type="PackedScene" uid="uid://copgqwn0pmr0q" path="res://tscn/player_spaceship.tscn" id="1_qorcu"]
 [ext_resource type="PackedScene" uid="uid://cbgh6o8w0dbbd" path="res://tscn/enemy_spaceship.tscn" id="2_2ijdq"]
 [ext_resource type="PackedScene" uid="uid://dsa446ddr0c0g" path="res://tscn/startscreen.tscn" id="2_txxj3"]
+[ext_resource type="PackedScene" uid="uid://c2a03y2dff8fn" path="res://tscn/restartscreen.tscn" id="5_43hha"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qorcu"]
 distance = -640.0
@@ -24,6 +25,27 @@ enemy_spaceship_scene = ExtResource("2_2ijdq")
 
 [node name="player_spaceship" parent="." instance=ExtResource("1_qorcu")]
 position = Vector2(183, 288)
+
+[node name="target" type="Label" parent="."]
+offset_left = 18.0
+offset_top = 23.0
+offset_right = 92.0
+offset_bottom = 46.0
+text = "Target"
+
+[node name="score" type="Label" parent="."]
+offset_left = 18.0
+offset_top = 47.0
+offset_right = 94.0
+offset_bottom = 72.0
+text = "Score:"
+
+[node name="grace" type="Label" parent="."]
+offset_left = 276.0
+offset_top = 16.0
+offset_right = 353.0
+offset_bottom = 39.0
+text = "Grace:"
 
 [node name="border_down" type="StaticBody2D" parent="."]
 
@@ -50,3 +72,5 @@ shape = SubResource("WorldBoundaryShape2D_2ijdq")
 [node name="startscreen" parent="." instance=ExtResource("2_txxj3")]
 offset_right = 0.0
 offset_bottom = 3.0
+
+[node name="restartscreen" parent="." instance=ExtResource("5_43hha")]
