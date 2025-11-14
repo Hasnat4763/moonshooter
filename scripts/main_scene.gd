@@ -63,6 +63,10 @@ func game_over():
 	grace = 0
 	game_running = false
 	$player_spaceship.game_running = false
+	$target.hide()
+	$score.hide()
+	$grace.hide()
+	$grace_given.hide()
 	$restartscreen.show()
 	if game_won:
 		$restartscreen/end.text = "You Won"
