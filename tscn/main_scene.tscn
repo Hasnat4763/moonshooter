@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://lieqghncfpij"]
+[gd_scene load_steps=9 format=3 uid="uid://lieqghncfpij"]
 
+[ext_resource type="Script" uid="uid://kfcydxbrq08h" path="res://scripts/main_scene.gd" id="1_cxrnk"]
 [ext_resource type="PackedScene" uid="uid://copgqwn0pmr0q" path="res://tscn/player_spaceship.tscn" id="1_qorcu"]
+[ext_resource type="PackedScene" uid="uid://cbgh6o8w0dbbd" path="res://tscn/enemy_spaceship.tscn" id="2_2ijdq"]
+[ext_resource type="PackedScene" uid="uid://dsa446ddr0c0g" path="res://tscn/startscreen.tscn" id="2_txxj3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qorcu"]
 distance = -640.0
@@ -16,28 +19,34 @@ normal = Vector2(1, 0)
 normal = Vector2(0, 1)
 
 [node name="Main_Scene" type="Node2D"]
+script = ExtResource("1_cxrnk")
+enemy_spaceship_scene = ExtResource("2_2ijdq")
 
 [node name="player_spaceship" parent="." instance=ExtResource("1_qorcu")]
-position = Vector2(184, 288)
+position = Vector2(183, 288)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="border_down" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border_down"]
 shape = SubResource("WorldBoundaryShape2D_qorcu")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="border_right" type="StaticBody2D" parent="."]
 position = Vector2(720, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border_right"]
 position = Vector2(-2, 0)
 shape = SubResource("WorldBoundaryShape2D_txxj3")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+[node name="border_up" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border_up"]
 shape = SubResource("WorldBoundaryShape2D_cxrnk")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+[node name="border_left" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border_left"]
 shape = SubResource("WorldBoundaryShape2D_2ijdq")
+
+[node name="startscreen" parent="." instance=ExtResource("2_txxj3")]
+offset_right = 0.0
+offset_bottom = 3.0

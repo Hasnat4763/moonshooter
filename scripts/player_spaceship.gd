@@ -27,7 +27,6 @@ func _physics_process(_delta: float) -> void:
 
 func shooting():
 	can_shoot = false
-	
 	var laser = laser_scene.instantiate()
 	laser.position = position
 	get_tree().current_scene.add_child(laser)
