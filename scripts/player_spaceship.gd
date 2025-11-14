@@ -9,8 +9,8 @@ var can_shoot: bool = true
 
 func _physics_process(_delta: float) -> void:
 	if game_running:
-		var direction_vertical := Input.get_axis("ui_left", "ui_right")
-		var direction_horizontal := Input.get_axis("ui_up", "ui_down")
+		var direction_vertical := Input.get_axis("left", "right")
+		var direction_horizontal := Input.get_axis("up", "down")
 		if direction_vertical:
 			velocity.x = direction_vertical * SPEED
 		else:
@@ -21,7 +21,7 @@ func _physics_process(_delta: float) -> void:
 		else:
 			velocity.y = move_toward(velocity.y , 0 , SPEED)
 			
-		if can_shoot and Input.is_action_pressed("ui_accept"):
+		if can_shoot and Input.is_action_pressed("shoot"):
 			shooting()
 		move_and_slide()
 

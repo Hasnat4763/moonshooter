@@ -7,6 +7,7 @@ var grace: int = 0
 var ship_spawning_interval = 3
 var timer = 0
 var score_target = 0
+var random_grace = 0
 @export var enemy_spaceship_scene : PackedScene
 func _ready() -> void:
 	$player_spaceship.hide()
@@ -24,6 +25,8 @@ func _process(delta: float) -> void:
 
 func start_game():
 	random_score()
+	random_grace_func()
+	
 	game_running = true
 	
 	$startscreen.hide()
@@ -31,10 +34,10 @@ func start_game():
 	$score.show()
 	$grace.show()
 	$target.text = "Target: " + str(score_target)
+	$grace_given.text = "Grace: " + str(random_grace)
 	$player_spaceship.game_running = true
 
 func spawn_spaceship():
-	#var screensize = get_viewport().get_visible_rect().size
 	var enemy_spaceship = enemy_spaceship_scene.instantiate()
 	enemy_spaceship.position.x = randi_range(10, 350)
 	enemy_spaceship.position.y = -50
@@ -52,8 +55,8 @@ func laser_hit():
 
 func spaceship_attacked():
 	grace += 1
-	$grace.text = "Grace: " + str(grace)
-	if grace == 4:
+	$grace.text = "Used: " + str(grace)
+	if grace == random_grace:
 		game_over()
 		
 func game_over():
@@ -79,7 +82,10 @@ func goback():
 	$score.hide()
 	$grace.hide()
 
-
 func random_score():
 	randomize()
 	score_target = randi_range(1, 40)
+
+func random_grace_func():
+	randomize()
+	random_grace = randi_range(1,score_target)

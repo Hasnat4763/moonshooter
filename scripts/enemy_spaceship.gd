@@ -7,7 +7,7 @@ signal passed
 func _process(delta: float) -> void:
 	if game_running:
 		position.y += delta * SPEED
-		if position.y >= 700:
+		if position.y >= 650:
 			passed.emit()
 			queue_free()
 	
