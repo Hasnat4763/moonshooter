@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://lieqghncfpij"]
+[gd_scene load_steps=15 format=3 uid="uid://lieqghncfpij"]
 
 [ext_resource type="Script" uid="uid://kfcydxbrq08h" path="res://scripts/main_scene.gd" id="1_cxrnk"]
 [ext_resource type="PackedScene" uid="uid://copgqwn0pmr0q" path="res://tscn/player_spaceship.tscn" id="1_qorcu"]
 [ext_resource type="PackedScene" uid="uid://cbgh6o8w0dbbd" path="res://tscn/enemy_spaceship.tscn" id="2_2ijdq"]
 [ext_resource type="PackedScene" uid="uid://dsa446ddr0c0g" path="res://tscn/startscreen.tscn" id="2_txxj3"]
+[ext_resource type="PackedScene" uid="uid://b04mo3nt144nx" path="res://tscn/watermelon_powerup.tscn" id="3_e3ixt"]
 [ext_resource type="Texture2D" uid="uid://c55mlngdv87dp" path="res://sprites/bg.png" id="3_o0tk4"]
 [ext_resource type="Texture2D" uid="uid://keynsgmfxqhw" path="res://sprites/earth.png" id="4_g8dkg"]
 [ext_resource type="PackedScene" uid="uid://c2a03y2dff8fn" path="res://tscn/restartscreen.tscn" id="5_43hha"]
@@ -22,9 +23,13 @@ normal = Vector2(1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2ijdq"]
 normal = Vector2(0, 1)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_aiik7"]
+distance = -60.0
+
 [node name="Main_Scene" type="Node2D"]
 script = ExtResource("1_cxrnk")
 enemy_spaceship_scene = ExtResource("2_2ijdq")
+watermelon = ExtResource("3_e3ixt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(180, 320)
@@ -41,7 +46,9 @@ texture = ExtResource("5_aiik7")
 [node name="player_spaceship" parent="." instance=ExtResource("1_qorcu")]
 position = Vector2(181, 550)
 
-[node name="target" type="Label" parent="."]
+[node name="scorelayer" type="CanvasLayer" parent="."]
+
+[node name="target" type="Label" parent="scorelayer"]
 offset_left = 18.0
 offset_top = 23.0
 offset_right = 92.0
@@ -51,7 +58,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "Target"
 
-[node name="score" type="Label" parent="."]
+[node name="score" type="Label" parent="scorelayer"]
 offset_left = 18.0
 offset_top = 47.0
 offset_right = 94.0
@@ -61,7 +68,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "Score:"
 
-[node name="grace" type="Label" parent="."]
+[node name="grace" type="Label" parent="scorelayer"]
 offset_left = 260.0
 offset_top = 46.0
 offset_right = 351.0
@@ -71,7 +78,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "Used: "
 
-[node name="grace_given" type="Label" parent="."]
+[node name="grace_given" type="Label" parent="scorelayer"]
 offset_left = 259.0
 offset_top = 23.0
 offset_right = 349.0
@@ -108,3 +115,11 @@ offset_right = 0.0
 offset_bottom = 3.0
 
 [node name="restartscreen" parent="." instance=ExtResource("5_43hha")]
+
+[node name="watermelon_powerup" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="watermelon_powerup"]
+position = Vector2(180, 548)
+shape = SubResource("WorldBoundaryShape2D_aiik7")
+
+[connection signal="area_entered" from="watermelon_powerup" to="." method="_on_watermelon_powerup_area_entered"]
