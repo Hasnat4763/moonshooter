@@ -1,9 +1,8 @@
 extends Area2D
-var SPEED = 150
 signal hit
 signal passed
 @export var game_running = false
-
+@export var SPEED = 150
 func _process(delta: float) -> void:
 	if game_running:
 		position.y += delta * SPEED

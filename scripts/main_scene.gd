@@ -1,8 +1,8 @@
 extends Node2D
 var game_running = false
 var game_won = false
-var ship_spawning_interval = 3
-var watermelon_spawning_interval = 6
+var ship_spawning_interval = 4
+var watermelon_spawning_interval = 15
 var watermelon_time_limit = 20
 var ship_timer = 0
 var watermelon_timer = 0
@@ -11,6 +11,7 @@ var grace: int = 0
 var watermelon_time_limit_counter = 0
 var score_target = 0
 var random_grace = 0
+var enemy_spaceship_speed_increase = 0
 var is_watermelon_active = false
 
 var save_path = "res://save.data"
@@ -36,11 +37,13 @@ func _process(delta: float) -> void:
 		watermelon_timer = 0
 	if is_watermelon_active:
 		watermelon_time_limit_counter += delta
-		$watermelon_powerup/watermelon/timer_watermelon.text = str(watermelon_time_limit - watermelon_time_limit_counter) + " Seconds"
+		var remaining_time = int(watermelon_time_limit - watermelon_time_limit_counter)
+		$watermelon_powerup/watermelon/timer_watermelon.text = str(remaining_time) + " Seconds"
 		if watermelon_time_limit_counter >= watermelon_time_limit:
 			is_watermelon_active = false
 			watermelon_time_limit_counter = 0
 			$watermelon_powerup.hide()
+
 func start_game():
 	random_score()
 	game_running = true
@@ -56,6 +59,7 @@ func spawn_spaceship():
 	enemy_spaceship.hit.connect(laser_hit)
 	enemy_spaceship.position.x = randi_range(10, 350)
 	enemy_spaceship.position.y = 0
+	enemy_spaceship.SPEED += enemy_spaceship_speed_increase
 	enemy_spaceship.game_running = true
 	enemy_spaceship.passed.connect(spaceship_attacked)
 	get_tree().current_scene.add_child(enemy_spaceship)
@@ -80,6 +84,7 @@ func game_over():
 	$player_spaceship.game_running = false
 	$scorelayer.hide()
 	$restartscreen.show()
+	$watermelon_powerup.hide()
 	if point > high_score:
 		save()
 		$restartscreen/highscore.text = "New High Score: " + str(point)
@@ -104,6 +109,7 @@ func goback():
 	$startscreen.show()
 	$player_spaceship.hide()
 	$scorelayer.hide()
+	$player_spaceship.game_running = false
 	ship_timer = 0
 	watermelon_timer = 0
 	point = 0
@@ -113,8 +119,9 @@ func goback():
 	random_grace = 0
 func random_score():
 	randomize()
-	score_target = randi_range(10, 40)
-	random_grace = randi_range(1, score_target/4)
+	score_target = randi_range(15, 40)
+	random_grace = randi_range(2, score_target/4.0)
+	
 func save():
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var(point)
@@ -130,6 +137,7 @@ func watermelon_activate():
 	$watermelon_powerup.show()
 	is_watermelon_active = true
 	score(2)
+	
 func _on_watermelon_powerup_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemies") and is_watermelon_active:
 		area.queue_free()
@@ -137,6 +145,9 @@ func _on_watermelon_powerup_area_entered(area: Area2D) -> void:
 func score(points):
 	point += points
 	$scorelayer/score.text = "Score: " + str(point)
+	if point % 4 == 0 and ship_spawning_interval > 1:
+		ship_spawning_interval -= 0.5
+		enemy_spaceship_speed_increase += 50
 	if point >= score_target:
 		game_won = true
 		game_over()
