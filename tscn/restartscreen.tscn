@@ -22,9 +22,9 @@ vertical_alignment = 1
 
 [node name="score" type="Label" parent="."]
 layout_mode = 0
-offset_top = 169.0
-offset_right = 358.0
-offset_bottom = 293.0
+offset_top = 129.0
+offset_right = 360.0
+offset_bottom = 253.0
 theme_override_colors/font_color = Color(9.3854965e-07, 0.44375953, 0.32190683, 1)
 text = "Your Score Was"
 horizontal_alignment = 1
@@ -32,11 +32,20 @@ vertical_alignment = 1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 81.0
+offset_left = 86.0
 offset_top = 386.0
-offset_right = 273.0
+offset_right = 278.0
 offset_bottom = 445.0
 theme_override_colors/font_hover_color = Color(0.79720676, 0, 0.240902, 1)
 text = "Go Back to StartScreen"
+
+[node name="highscore" type="Label" parent="."]
+layout_mode = 0
+offset_top = 226.0
+offset_right = 361.0
+offset_bottom = 284.0
+text = "High Score:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

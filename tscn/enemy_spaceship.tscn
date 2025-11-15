@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://7r1i8wvkuown" path="res://sprites/spaceship.png" id="2_cgyl2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40jd2"]
-size = Vector2(32, 34)
+size = Vector2(38, 34)
 
 [node name="enemy_spaceship" type="Area2D" groups=["enemies"]]
 script = ExtResource("1_cgyl2")
