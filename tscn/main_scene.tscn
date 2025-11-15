@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://lieqghncfpij"]
+[gd_scene load_steps=16 format=3 uid="uid://lieqghncfpij"]
 
 [ext_resource type="Script" uid="uid://kfcydxbrq08h" path="res://scripts/main_scene.gd" id="1_cxrnk"]
 [ext_resource type="PackedScene" uid="uid://copgqwn0pmr0q" path="res://tscn/player_spaceship.tscn" id="1_qorcu"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://keynsgmfxqhw" path="res://sprites/earth.png" id="4_g8dkg"]
 [ext_resource type="PackedScene" uid="uid://c2a03y2dff8fn" path="res://tscn/restartscreen.tscn" id="5_43hha"]
 [ext_resource type="Texture2D" uid="uid://b2c0y2bxpoxqb" path="res://sprites/moon.png" id="5_aiik7"]
+[ext_resource type="Texture2D" uid="uid://c6mwc20c0i1cq" path="res://sprites/watermelon_border.png" id="10_3wiuk"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qorcu"]
 distance = -640.0
@@ -121,6 +122,10 @@ offset_bottom = 3.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="watermelon_powerup"]
 position = Vector2(180, 548)
 shape = SubResource("WorldBoundaryShape2D_aiik7")
+
+[node name="Sprite2D" type="Sprite2D" parent="watermelon_powerup"]
+position = Vector2(180, 608)
+texture = ExtResource("10_3wiuk")
 
 [node name="watermelon" type="Label" parent="watermelon_powerup"]
 offset_left = 51.0

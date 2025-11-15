@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://coqqhtbd7cia"]
+
+[ext_resource type="Texture2D" uid="uid://ofwgmh803wml" path="res://sprites/speedboost.png" id="1_bev0t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sij0g"]
+radius = 32.0
+
+[node name="speedbooster" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sij0g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bev0t")
