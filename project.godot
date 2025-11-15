@@ -34,6 +34,7 @@ enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg", "res://addon
 
 enemies=""
 laser=""
+watermelon=""
 
 [input]
 

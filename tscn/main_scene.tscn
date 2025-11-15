@@ -122,4 +122,24 @@ offset_bottom = 3.0
 position = Vector2(180, 548)
 shape = SubResource("WorldBoundaryShape2D_aiik7")
 
+[node name="watermelon" type="Label" parent="watermelon_powerup"]
+offset_left = 51.0
+offset_top = 122.0
+offset_right = 310.0
+offset_bottom = 192.0
+text = "WATERMELON ACTIVE
+You are safe for"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="timer_watermelon" type="Label" parent="watermelon_powerup/watermelon"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 65.0
+offset_right = 190.0
+offset_bottom = 88.0
+text = "0 Seconds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="area_entered" from="watermelon_powerup" to="." method="_on_watermelon_powerup_area_entered"]

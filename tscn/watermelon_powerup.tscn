@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_plknd"]
 radius = 15.0
 
-[node name="watermelon_powerup" type="Area2D"]
+[node name="watermelon_powerup" type="Area2D" groups=["watermelon"]]
 script = ExtResource("1_qygp8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

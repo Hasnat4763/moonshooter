@@ -1,9 +1,11 @@
 extends CharacterBody2D
 const SPEED = 300.0
 var can_shoot: bool = true
+
 @export var laser_scene : PackedScene
-@export var cooldown = 0.2
+@export var cooldown = 0.5
 @export var game_running = false
+
 func _physics_process(_delta: float) -> void:
 	if game_running:
 		var direction_vertical := Input.get_axis("left", "right")
