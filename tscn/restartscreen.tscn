@@ -15,7 +15,8 @@ script = ExtResource("1_5qyyn")
 layout_mode = 0
 offset_right = 360.0
 offset_bottom = 160.0
-theme_override_colors/font_color = Color(1.92523e-07, 0.47611296, 0.27063975, 1)
+theme_override_colors/font_color = Color(0.30400175, 0.8463906, 3.85046e-07, 1)
+theme_override_font_sizes/font_size = 32
 text = "You Won or Lost"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -25,7 +26,8 @@ layout_mode = 0
 offset_top = 129.0
 offset_right = 360.0
 offset_bottom = 253.0
-theme_override_colors/font_color = Color(9.3854965e-07, 0.44375953, 0.32190683, 1)
+theme_override_colors/font_color = Color(0.22494954, 0.75355935, 0, 1)
+theme_override_font_sizes/font_size = 32
 text = "Your Score Was"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -41,11 +43,25 @@ text = "Go Back to StartScreen"
 
 [node name="highscore" type="Label" parent="."]
 layout_mode = 0
-offset_top = 226.0
+offset_top = 261.0
 offset_right = 361.0
-offset_bottom = 284.0
+offset_bottom = 319.0
+theme_override_colors/font_color = Color(0.73318005, 0.5468009, 0.12811634, 1)
+theme_override_font_sizes/font_size = 32
 text = "High Score:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 122.0
+offset_top = 474.0
+offset_right = 245.0
+offset_bottom = 523.0
+theme_override_colors/font_color = Color(0.30702338, 0.7798922, 0, 1)
+theme_override_colors/font_hover_color = Color(0.15322566, 0.40662506, 1, 1)
+text = "Quit"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

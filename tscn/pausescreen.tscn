@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccgi1eypeiyaw"]
+
+[ext_resource type="Script" uid="uid://f2xcemry76g4" path="res://scripts/pausescreen.gd" id="1_lpj6s"]
+
+[node name="pausescreen" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_lpj6s")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 360.0
+offset_bottom = 167.0
+theme_override_colors/font_color = Color(0.80666447, 0, 0.21147576, 1)
+text = "YOUR GAME IS PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="play" type="Button" parent="."]
+offset_left = 60.0
+offset_top = 197.0
+offset_right = 308.0
+offset_bottom = 316.0
+theme_override_colors/font_color = Color(0.3640179, 0.99999994, 0.8234523, 1)
+theme_override_colors/font_hover_color = Color(0.76419085, 0.5512251, 0, 1)
+text = "Start Playing"
+flat = true
+
+[node name="stop" type="Button" parent="."]
+offset_left = 127.0
+offset_top = 320.0
+offset_right = 244.0
+offset_bottom = 355.0
+theme_override_colors/font_color = Color(0.08642729, 0.9999997, 0.9688774, 1)
+theme_override_colors/font_hover_color = Color(0.7292252, 0, 0.28713378, 1)
+text = "Quit"
+flat = true
+
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="stop" to="." method="_on_stop_pressed"]

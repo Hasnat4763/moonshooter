@@ -36,6 +36,7 @@ enemies=""
 laser=""
 watermelon=""
 player=""
+speedboost=""
 
 [input]
 

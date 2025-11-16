@@ -1,7 +1,6 @@
 extends CharacterBody2D
-const SPEED = 300.0
 var can_shoot: bool = true
-
+@export var SPEED = 300.0
 @export var laser_scene : PackedScene
 @export var cooldown = 0.5
 @export var game_running = false

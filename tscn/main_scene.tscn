@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://lieqghncfpij"]
+[gd_scene load_steps=22 format=3 uid="uid://lieqghncfpij"]
 
 [ext_resource type="Script" uid="uid://kfcydxbrq08h" path="res://scripts/main_scene.gd" id="1_cxrnk"]
 [ext_resource type="PackedScene" uid="uid://copgqwn0pmr0q" path="res://tscn/player_spaceship.tscn" id="1_qorcu"]
@@ -7,9 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://b04mo3nt144nx" path="res://tscn/watermelon_powerup.tscn" id="3_e3ixt"]
 [ext_resource type="Texture2D" uid="uid://c55mlngdv87dp" path="res://sprites/bg.png" id="3_o0tk4"]
 [ext_resource type="Texture2D" uid="uid://keynsgmfxqhw" path="res://sprites/earth.png" id="4_g8dkg"]
+[ext_resource type="PackedScene" uid="uid://coqqhtbd7cia" path="res://tscn/speedbooster.tscn" id="4_lmd00"]
 [ext_resource type="PackedScene" uid="uid://c2a03y2dff8fn" path="res://tscn/restartscreen.tscn" id="5_43hha"]
 [ext_resource type="Texture2D" uid="uid://b2c0y2bxpoxqb" path="res://sprites/moon.png" id="5_aiik7"]
+[ext_resource type="Texture2D" uid="uid://dlgoh0acu733d" path="res://sprites/earth_damaged_25%.png" id="8_hq41b"]
+[ext_resource type="Texture2D" uid="uid://lpgqoiyt1e8o" path="res://sprites/earth_damaged_50%.png" id="9_81pdl"]
+[ext_resource type="Texture2D" uid="uid://bj0ddsk8p52sl" path="res://sprites/earth_damaged_75%.png" id="9_g0415"]
 [ext_resource type="Texture2D" uid="uid://c6mwc20c0i1cq" path="res://sprites/watermelon_border.png" id="10_3wiuk"]
+[ext_resource type="Texture2D" uid="uid://w61h0qcjnhws" path="res://sprites/earth_damaged_100%.png" id="10_81pdl"]
+[ext_resource type="PackedScene" uid="uid://ccgi1eypeiyaw" path="res://tscn/pausescreen.tscn" id="12_dgl31"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qorcu"]
 distance = -640.0
@@ -31,18 +37,37 @@ distance = -60.0
 script = ExtResource("1_cxrnk")
 enemy_spaceship_scene = ExtResource("2_2ijdq")
 watermelon = ExtResource("3_e3ixt")
+speedboost = ExtResource("4_lmd00")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(180, 320)
 texture = ExtResource("3_o0tk4")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(180, 25)
+texture = ExtResource("5_aiik7")
+
+[node name="earth" type="CanvasLayer" parent="."]
+
+[node name="earth0" type="Sprite2D" parent="earth"]
 position = Vector2(180, 625)
 texture = ExtResource("4_g8dkg")
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(180, 25)
-texture = ExtResource("5_aiik7")
+[node name="earth25" type="Sprite2D" parent="earth"]
+position = Vector2(180, 608)
+texture = ExtResource("8_hq41b")
+
+[node name="earth50" type="Sprite2D" parent="earth"]
+position = Vector2(181, 608)
+texture = ExtResource("9_81pdl")
+
+[node name="earth75" type="Sprite2D" parent="earth"]
+position = Vector2(180, 608)
+texture = ExtResource("9_g0415")
+
+[node name="earth100" type="Sprite2D" parent="earth"]
+position = Vector2(180, 608)
+texture = ExtResource("10_81pdl")
 
 [node name="player_spaceship" parent="." instance=ExtResource("1_qorcu")]
 position = Vector2(181, 550)
@@ -132,6 +157,7 @@ offset_left = 51.0
 offset_top = 122.0
 offset_right = 310.0
 offset_bottom = 192.0
+theme_override_colors/font_color = Color(0.9134181, 0.52346015, 1.92523e-07, 1)
 text = "WATERMELON ACTIVE
 You are safe for"
 horizontal_alignment = 1
@@ -146,5 +172,15 @@ offset_bottom = 88.0
 text = "0 Seconds"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="pausescreen" parent="." instance=ExtResource("12_dgl31")]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 360.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(0, 0.88279754, 0.2881737, 1)
+text = "From the river to the sea Palestine will be free
+🍉🍉"
+horizontal_alignment = 1
 
 [connection signal="area_entered" from="watermelon_powerup" to="." method="_on_watermelon_powerup_area_entered"]

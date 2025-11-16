@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbgh6o8w0dbbd"]
 
 [ext_resource type="Script" uid="uid://cjf4otbq8b4ts" path="res://scripts/enemy_spaceship.gd" id="1_cgyl2"]
-[ext_resource type="Texture2D" uid="uid://7r1i8wvkuown" path="res://sprites/spaceship.png" id="2_cgyl2"]
+[ext_resource type="Texture2D" uid="uid://b0lnbij2c3nko" path="res://sprites/enemyship.png" id="2_cgyl2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40jd2"]
-size = Vector2(38, 34)
+size = Vector2(32, 36)
 
 [node name="enemy_spaceship" type="Area2D" groups=["enemies"]]
 script = ExtResource("1_cgyl2")

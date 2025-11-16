@@ -25,12 +25,51 @@ autowrap_mode = 1
 layout_mode = 1
 anchors_preset = -1
 offset_left = 119.0
-offset_top = 311.0
+offset_top = 264.0
 offset_right = 242.0
-offset_bottom = 360.0
+offset_bottom = 313.0
 theme_override_colors/font_color = Color(0.30702338, 0.7798922, 0, 1)
 theme_override_colors/font_hover_color = Color(0.15322566, 0.40662506, 1, 1)
 text = "Start Playing"
-flat = true
+
+[node name="custom" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 324.0
+offset_right = 275.0
+offset_bottom = 355.0
+theme_override_colors/font_color = Color(0.24955791, 0.7412162, 0, 1)
+text = "Custom Challenge"
+
+[node name="score" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 368.0
+offset_right = 234.0
+offset_bottom = 399.0
+placeholder_text = "Score Target"
+emoji_menu_enabled = false
+
+[node name="grace" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 402.0
+offset_right = 234.0
+offset_bottom = 433.0
+placeholder_text = "Grace"
+alignment = 1
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 120.0
+offset_top = 463.0
+offset_right = 243.0
+offset_bottom = 512.0
+theme_override_colors/font_color = Color(0.30702338, 0.7798922, 0, 1)
+theme_override_colors/font_hover_color = Color(0.15322566, 0.40662506, 1, 1)
+text = "Quit"
 
 [connection signal="pressed" from="Button" to="." method="start_button_pressed"]
+[connection signal="toggled" from="custom" to="." method="_on_custom_toggled"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

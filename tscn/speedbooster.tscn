@@ -1,14 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://coqqhtbd7cia"]
+[gd_scene load_steps=4 format=3 uid="uid://coqqhtbd7cia"]
 
 [ext_resource type="Texture2D" uid="uid://ofwgmh803wml" path="res://sprites/speedboost.png" id="1_bev0t"]
+[ext_resource type="Script" uid="uid://ddt68eef0pir8" path="res://scripts/speedbooster.gd" id="1_sij0g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sij0g"]
 radius = 32.0
 
-[node name="speedbooster" type="Area2D"]
+[node name="speedbooster" type="Area2D" groups=["speedboost"]]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_sij0g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_sij0g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("1_bev0t")
+
+[connection signal="area_entered" from="." to="." method="_on_speedbooster"]
