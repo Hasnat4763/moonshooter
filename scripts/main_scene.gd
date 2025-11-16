@@ -220,7 +220,7 @@ func score(points): # Ts function is the one to calculate scoring and winning st
 	if point >= score_target:
 		game_won = true
 		game_over()
-func calc_earth_damage():
+func calc_earth_damage(): # ts calculates earth damage percentage based on given grace amount and used and displays damages
 	var persentage = (grace / float(random_grace)) * 100
 	$earth/earth0.hide()
 	$earth/earth25.hide()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://copgqwn0pmr0q"]
+[gd_scene load_steps=6 format=3 uid="uid://copgqwn0pmr0q"]
 
 [ext_resource type="Texture2D" uid="uid://7r1i8wvkuown" path="res://sprites/spaceship.png" id="1_1uxfi"]
 [ext_resource type="Script" uid="uid://hxj4krycqosb" path="res://scripts/player_spaceship.gd" id="1_5hcij"]
 [ext_resource type="PackedScene" uid="uid://tdfb3hi3qtn2" path="res://tscn/laser.tscn" id="2_vbtcn"]
+[ext_resource type="AudioStream" uid="uid://byd4ylnyoxeig" path="res://sound/laser-312360.mp3" id="4_0bawg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hcij"]
 size = Vector2(32, 34)
@@ -21,3 +22,6 @@ shape = SubResource("RectangleShape2D_5hcij")
 
 [node name="shipshape" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_5hcij")
+
+[node name="laser" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0bawg")

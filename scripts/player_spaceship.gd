@@ -21,6 +21,7 @@ func _physics_process(_delta: float) -> void:
 			shooting()
 		move_and_slide()
 func shooting():
+	$laser.play()
 	can_shoot = false
 	var laser = laser_scene.instantiate()
 	laser.position = position
